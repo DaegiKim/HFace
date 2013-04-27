@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ITLab-HFace" default="build">
+    <!-- version info-->
+    <property name = "major-version" value = "1" />
+    <property name = "minor-version" value = "0" />
+    <property name = "build-number" value = "0" />
+    <property name = "version" value = "${major-version}.${minor-version}.${build-number}" />
+
+    <!-- name info -->
+    <property name = "company-name" value = "ITLab" />
+    <property name = "project-name" value = "HFace" />
+    <property name = "general-lib" value = "${company-name}-${project-name}.jar" />
+    <property name = "general-src" value = "${company-name}-${project-name}.src.zip" />
+
+    <!-- source directory info -->
+    <property name = "build-Path" location = "." />
+    <property name = "src.dir.src" location = "${build-Path}/src" />
+    <property name = "src.dir.bin" location = "${build-Path}/out/production/HFace" />
+    <property name = "src.dir.build" location = "${build-Path}/build" />
+
+    <!-- build info -->
+    <target name = "build" depends="build-lib, build-src" />
+    <target name = "clean-all" depends="clean-lib, clean-src" />
+
+    <target name = "clean-lib">
+        <delete file = "${src.dir.build}/${general-lib}" />
+    </target>
+
+    <target name = "clean-src">
+        <delete file = "${src.dir.build}/${general-src}" />
+    </target>
+
+    <target name = "build-lib" depends = "clean-lib">
+        <jar destfile = "${src.dir.build}/${general-lib}" basedir = "${src.dir.bin}">
+            <manifest>
+                <attribute name = "${project-name}-Version" value = "${version}" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name = "build-src" depends = "clean-src">
+        <zip zipfile = "${src.dir.build}/${general-src}" basedir = "${src.dir.src}">
+        </zip>
+    </target>
+</project>
