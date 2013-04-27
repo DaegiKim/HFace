@@ -1,0 +1,9 @@
+hdfs://localhost:9000/user/hadoop/image/image0701.jpg
+hdfs://localhost:9000/user/hadoop/image/image0702.jpg
+hdfs://localhost:9000/user/hadoop/image/image0703.jpg
+hdfs://localhost:9000/user/hadoop/image/image0704.jpg
+hdfs://localhost:9000/user/hadoop/image/image0705.jpg
+hdfs://localhost:9000/user/hadoop/image/image0706.jpg
+hdfs://localhost:9000/user/hadoop/image/image0707.jpg
+hdfs://localhost:9000/user/hadoop/image/image0708.jpg
+hdfs://localhost:9000/user/hadoop/image/image0709.jpg
