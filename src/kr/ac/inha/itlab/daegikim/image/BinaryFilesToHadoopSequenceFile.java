@@ -50,7 +50,6 @@ public class BinaryFilesToHadoopSequenceFile {
                 IOUtils.closeStream(in);
             }
         }
-
     }
 
 
