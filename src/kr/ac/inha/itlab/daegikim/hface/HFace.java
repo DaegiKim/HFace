@@ -26,7 +26,6 @@ public class HFace {
 
         job.setInputFormatClass(SequenceFileInputFormat.class);
         job.setMapperClass(HFaceMapper.class);
-
         job.setReducerClass(HFaceReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
