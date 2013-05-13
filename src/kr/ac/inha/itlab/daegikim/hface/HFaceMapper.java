@@ -31,7 +31,7 @@ public class HFaceMapper extends Mapper<Text, BytesWritable, Text, Text> {
         try {
             rect = faceDetection(sub);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
         Text rectText = new Text(rect.toString());
