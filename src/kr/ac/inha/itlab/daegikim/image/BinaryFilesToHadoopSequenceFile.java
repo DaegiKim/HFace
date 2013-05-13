@@ -1,6 +1,5 @@
 package kr.ac.inha.itlab.daegikim.image;
 
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;
@@ -21,9 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URI;
 
-
 public class BinaryFilesToHadoopSequenceFile {
-
     private static Logger logger = Logger.getLogger(BinaryFilesToHadoopSequenceFile.class);
 
     public static class BinaryFilesToHadoopSequenceFileMapper extends Mapper<Object, Text, Text, BytesWritable> {
@@ -52,7 +49,6 @@ public class BinaryFilesToHadoopSequenceFile {
         }
     }
 
-
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
@@ -60,7 +56,6 @@ public class BinaryFilesToHadoopSequenceFile {
             System.err.println("Usage: BinaryFilesToHadoopSequenceFile <in Path for url file> <out Path for sequence file>");
             System.exit(2);
         }
-
 
         Job job = new Job(conf, "BinaryFilesToHadoopSequenceFile");
         job.setJarByClass(BinaryFilesToHadoopSequenceFile.class);
@@ -74,6 +69,4 @@ public class BinaryFilesToHadoopSequenceFile {
         FileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
-
-
 }
