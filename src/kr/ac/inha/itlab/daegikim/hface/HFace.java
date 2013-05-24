@@ -5,7 +5,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
@@ -24,7 +24,7 @@ public class HFace {
         Job job = new Job(conf, "HFace");
         job.setJarByClass(HFace.class);
 
-        job.setInputFormatClass(SequenceFileInputFormat.class);
+        job.setInputFormatClass(TextInputFormat.class);
         job.setMapperClass(HFaceMapper.class);
         job.setReducerClass(HFaceReducer.class);
         job.setOutputKeyClass(Text.class);
