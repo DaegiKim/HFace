@@ -11,6 +11,8 @@ import org.opencv.objdetect.CascadeClassifier;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class HFaceMapper extends Mapper<Object, Text, Text, Text> {
     public static CascadeClassifier faceDetector = null;
@@ -37,7 +39,8 @@ public class HFaceMapper extends Mapper<Object, Text, Text, Text> {
             e.printStackTrace();
         }
 
-        Text rectText = new Text(rect.toString());
+        String dateFormatted = new SimpleDateFormat("HH:mm:ss:SSS").format(Calendar.getInstance().getTime());
+        Text rectText = new Text(rect.toString()+" * "+dateFormatted);
         context.write(rectText, value);
     }
 
@@ -51,9 +54,8 @@ public class HFaceMapper extends Mapper<Object, Text, Text, Text> {
         Mat image = Highgui.imread("image/"+filename);
         faceDetector.detectMultiScale(image, faceDetections, 1.4, 1, 0, new Size(128, 128), new Size(256, 256));
 
-        for (Rect rect : faceDetections.toArray()) {
-            //Core.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 0), 2);
-            return rect;
+        if(faceDetections.toArray().length>0) {
+            return faceDetections.toArray()[0];
         }
         return new Rect();
     }
